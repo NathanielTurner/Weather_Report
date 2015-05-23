@@ -1,4 +1,11 @@
 require './weather_report.rb'
+require 'active_record'
+
+ActiveRecord::Base.establish_connection(
+  adapter:  'sqlite3',
+  database: 'weather.sqlite3'
+)
+
 class WeatherReportMigration < ActiveRecord::Migration
   def change
     create_table :conditions do |t|

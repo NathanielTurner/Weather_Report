@@ -88,9 +88,18 @@ class WeatherReportTest < Minitest::Test
   end
 
   def test_conditions_can_be_set_from_api_data
-    condition = Condition.create
+    condition = Condition.create(name: "Current Conditions")
     condition.build_condition(27253)
+    condition.save
     assert_equal "Graham, NC", condition.location
+    assert_equal 1, Condition.all.count
+    assert_equal "Graham, NC", Condition.last.location
+    assert_equal "Clear", Condition.last.weather
+
+  end
+
+  def test_condition_data_is_split
+
   end
 
 end
