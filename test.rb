@@ -58,4 +58,26 @@ class WeatherReportTest < Minitest::Test
     assert_equal 4, DuskDawn.all.count
   end
 
+  def test_all_tables_simultaneously
+    DuskDawn.create(name: "rising")
+    CurrentAlert.create(name: "meteor")
+    Hurricane.create(name: "Billy")
+    TenDay.create(name: "fabulous")
+    Condition.create(name: "cloudy")
+    assert_equal 1, DuskDawn.all.count
+    assert_equal 1, CurrentAlert.all.count
+    assert_equal 1, Hurricane.all.count
+    assert_equal 1, TenDay.all.count
+    assert_equal 1, Condition.all.count
+    assert_equal "rising", DuskDawn.last.name
+    assert_equal "meteor", CurrentAlert.last.name
+    assert_equal "fabulous", TenDay.last.name
+  end
+
+  def test_WU_api_is_getting_data
+    condition = Condition.create(name: "nate")
+    assert_equal "Graham, NC", condition.data_getter("current_observation", "display_location", "full")
+    assert_equal "Graham", condition.data_getter("current_observation", "display_location", "city")
+  end
+
 end
