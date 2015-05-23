@@ -13,4 +13,8 @@ require './ten_day.rb'
 require './current_alert.rb'
 require './hurricane.rb'
 
-#WeatherReportMigration.migrate(:up)
+WeatherReportMigration.migrate(:up)
+
+condition = Condition.create(name: "Current Conditions")
+condition.build_condition(27253)
+condition.save
