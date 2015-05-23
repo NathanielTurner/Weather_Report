@@ -12,5 +12,6 @@ require './condition.rb'
 require './ten_day.rb'
 require './current_alert.rb'
 require './hurricane.rb'
-
+data = HTTParty.get("http://api.wunderground.com/api/#{ENV['WUNDERGROUND_KEY']}/conditions/q/27253.json")
+puts data["current_observation"]["display_location"]["city"]
 #WeatherReportMigration.migrate(:up)
