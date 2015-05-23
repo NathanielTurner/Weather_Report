@@ -80,4 +80,11 @@ class WeatherReportTest < Minitest::Test
     assert_equal "Graham", condition.data_getter("current_observation", "display_location", "city")
   end
 
+  def test_conditions_have_locations_temps_and_weather
+    condition = Condition.create(location: "Graham, NC", temp_f: 68.4, weather: "Clear")
+    assert_equal "Graham, NC", condition.loacation
+    assert_equal 68.4, condition.temp_f
+    assert_equal "Clear", condition.weather
+  end
+
 end
