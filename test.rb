@@ -81,10 +81,16 @@ class WeatherReportTest < Minitest::Test
   end
 
   def test_conditions_have_locations_temps_and_weather
-    condition = Condition.create(location: "Graham, NC", temp_f: 68.4, weather: "Clear")
-    assert_equal "Graham, NC", condition.loacation
+    condition = Condition.create(name: "Current Conditions", location: "Graham, NC", temp_f: 68.4, weather: "Clear")
+    assert_equal "Graham, NC", condition.location
     assert_equal 68.4, condition.temp_f
     assert_equal "Clear", condition.weather
+  end
+
+  def test_conditions_can_be_set_from_api_data
+    condition = Condition.create
+    condition.build_condition(27253)
+    assert_equal "Graham, NC", condition.location
   end
 
 end
