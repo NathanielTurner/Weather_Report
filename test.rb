@@ -95,7 +95,6 @@ class WeatherReportTest < Minitest::Test
     assert_equal 1, Condition.all.count
     assert_equal "Graham, NC", Condition.last.location
     assert_equal "Clear", Condition.last.weather
-
   end
 
   def test_condition_data_is_split
