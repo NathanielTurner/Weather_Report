@@ -7,9 +7,10 @@ ActiveRecord::Base.establish_connection(
 )
 
 require './migrations.rb'
+require './dusk_dawn.rb'
 require './condition.rb'
 require './ten_day.rb'
 require './current_alert.rb'
 require './hurricane.rb'
 
-WeatherReportMigration.migrate(:up)
+#WeatherReportMigration.migrate(:up)
