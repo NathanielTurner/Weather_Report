@@ -3,6 +3,9 @@ class WeatherReportMigration < ActiveRecord::Migration
   def change
     create_table :conditions do |t|
       t.string :name
+      t.string :location
+      t.float :temp_f
+      t.string :weather
     end
 
     create_table :ten_days do |t|
