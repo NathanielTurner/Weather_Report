@@ -1,4 +1,3 @@
-require 'httparty'
 require 'active_record'
 
 ActiveRecord::Base.establish_connection(
@@ -6,15 +5,8 @@ ActiveRecord::Base.establish_connection(
   database: 'weather.sqlite3'
 )
 
-require './migrations.rb'
-require './dusk_dawn.rb'
 require './condition.rb'
 require './ten_day.rb'
+require './dusk_dawn.rb'
 require './current_alert.rb'
 require './hurricane.rb'
-
-WeatherReportMigration.migrate(:up)
-
-condition = Condition.create(name: "Current Conditions")
-condition.build_condition(27253)
-condition.save

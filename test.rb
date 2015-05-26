@@ -97,8 +97,8 @@ class WeatherReportTest < Minitest::Test
     assert_equal "Clear", Condition.last.weather
   end
 
-  def test_condition_data_is_split
-
+  def test_TenDay_can_get_api_data
+    
   end
 
 end
